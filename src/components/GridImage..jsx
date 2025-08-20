@@ -8,47 +8,47 @@ import img7 from '../assets/images/7.png';
 
 const GridImage = () => {
   return (
-    <section className='px-10 mt-20 mb-16 space-y-4'>
+    <section className='px-5 mt-8 mb-6'>
       {/* Baris Atas */}
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-nogutter md:grid-cols-4 gap-3'>
         <img
           src={img1}
           alt='img1'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
         <img
           src={img2}
           alt='img2'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
         <img
           src={img3}
           alt='img3'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
         <img
           src={img4}
           alt='img4'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
       </div>
 
       {/* Baris Bawah */}
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-nogutter md:grid-cols-3 gap-3 mt-3'>
         <img
           src={img5}
           alt='img5'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
         <img
           src={img6}
           alt='img6'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
         <img
           src={img7}
           alt='img7'
-          className='w-full h-60 object-cover rounded-2xl'
+          className='w-full h-15rem object-cover border-round-2xl col'
         />
       </div>
     </section>

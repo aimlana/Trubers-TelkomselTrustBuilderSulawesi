@@ -1,24 +1,23 @@
-import img8 from '../assets/images/8.jpg'
+import img8 from '../assets/images/8.jpg';
 
 const Subscribe = () => {
   return (
-    <section id='subscribe' className='p-7'>
-      <div className='relative w-full h-[600px] overflow-hidden rounded-3xl'>
+    <section id='subscribe' className='p-4'>
+      <div className='relative w-full h-30rem overflow-hidden border-round-3xl'>
         {/* Background Image */}
-        <img src={img8} alt='padar' className='w-full h-full object-cover' />
+        <img src={img8} alt='Img8' className='w-full h-full object-cover' />
 
         {/* Overlay */}
-        <div className='absolute inset-0 bg-black opacity-40'></div>
+        <div className='absolute top-0 left-0 w-full h-full bg-black-alpha-70'></div>
 
         {/* Content */}
-        <div className='absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-6'>
-          <h2 className='text-white text-4xl md:text-5xl font-medium'>
+        <div className='absolute top-0 left-0 w-full flex flex-column align-items-center justify-content-center text-center z-1 mt-8'>
+          <h2 className='subs-text text-white text-3xl md:text-5xl font-medium line-height-3'>
             Tunjukkan bakatmu bersama Telkomsel Talent dan raih pengalaman seru
             menuju masa depan!
           </h2>
-          <button 
-            className='mt-16 px-8 py-3 cursor-pointer rounded-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-medium flex 
-                items-center gap-2 mx-auto shadow-lg hover:scale-105  hover:from-secondary hover:to-primary transition'>
+
+          <button className='btn-gradient mt-5 px-5 py-3 cursor-pointer'>
             Daftar Sekarang
           </button>
         </div>

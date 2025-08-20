@@ -38,30 +38,30 @@ const FaqSection = () => {
   return (
     <section
       id='faq'
-      className='mx-16 pt-40 pb-32 flex flex-col md:flex-row justify-between gap-10'
+      className='mx-4 md:mx-8 pt-8 pb-6 flex flex-column md:flex-row justify-content-between gap-6'
     >
       {/* Left content */}
-      <div>
-        <h2 className='text-4xl md:text-6xl font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>
+      <div className='flex-1'>
+        <h2 className='faq-title text-4xl md:text-6xl font-medium bg-gradient text-transparent bg-clip-text line-height-3'>
           Frequently Asked <br /> Questions
         </h2>
-        <p className='text-lg text-gray-500 mt-6 md:mt-12'>
+        <p className='text-lg text-600 mt-1 md:mt-2 line-height-3'>
           Temukan jawaban untuk pertanyaan umum yang sering <br />
           ditanyakan tentang Telkomsel Talent.
         </p>
       </div>
 
       {/* FAQ Cards */}
-      <div className='flex flex-col'>
+      <div className='flex flex-column flex-1'>
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className='cursor-pointer w-full md:w-[750px] shadow px-8 py-6 md:py-12 rounded-3xl flex flex-col justify-center items-start mb-6 transition hover:shadow-lg'
+            className='cursor-pointer shadow-2 p-4 md:p-5 border-round-3xl flex flex-column align-items-start mb-4 transition-all hover:shadow-4'
             onClick={() => toggleFAQ(index)}
           >
             <h4 className='text-lg font-medium'>{faq.question}</h4>
             <p
-              className={`text-sm text-neutral-500 mt-4 transition-all duration-300 ${
+              className={`text-sm text-600 mt-3 transition-all duration-300 ${
                 openIndex === index ? 'block' : 'hidden'
               }`}
             >

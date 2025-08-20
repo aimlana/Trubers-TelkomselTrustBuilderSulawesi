@@ -7,6 +7,9 @@ const users = [
     username: '@brianngo',
     avatar: 'https://i.pravatar.cc/150?img=1',
     nilai: 9821,
+    like: 1200,
+    comment: 300,
+    view: 15000,
   },
   {
     id: 2,
@@ -14,6 +17,9 @@ const users = [
     username: '@joliejoie',
     avatar: 'https://i.pravatar.cc/150?img=2',
     nilai: 9770,
+    like: 1100,
+    comment: 250,
+    view: 14200,
   },
   {
     id: 3,
@@ -21,6 +27,9 @@ const users = [
     username: '@daviddo',
     avatar: 'https://i.pravatar.cc/150?img=3',
     nilai: 9721,
+    like: 980,
+    comment: 210,
+    view: 13800,
   },
   {
     id: 4,
@@ -28,6 +37,9 @@ const users = [
     username: '@henrietta',
     avatar: 'https://i.pravatar.cc/150?img=4',
     nilai: 9011,
+    like: 860,
+    comment: 180,
+    view: 12000,
   },
   {
     id: 5,
@@ -35,6 +47,9 @@ const users = [
     username: '@darrel',
     avatar: 'https://i.pravatar.cc/150?img=5',
     nilai: 8990,
+    like: 810,
+    comment: 150,
+    view: 11800,
   },
   {
     id: 6,
@@ -42,155 +57,202 @@ const users = [
     username: '@alexbrr',
     avatar: 'https://i.pravatar.cc/150?img=6',
     nilai: 8981,
+    like: 780,
+    comment: 140,
+    view: 11700,
   },
 ];
 
 const Leaderboard = () => {
-  // Urutkan dari nilai terbesar ke terkecil
   const sortedUsers = [...users].sort((a, b) => b.nilai - a.nilai);
-
-  // Ambil top 3 untuk podium
-  const topUsers = sortedUsers.slice(0, 3).map((u, i) => ({
-    ...u,
-    rank: i + 1,
-  }));
-
-  // Sisanya untuk tabel
-  const leaderboard = sortedUsers.slice(3).map((u, i) => ({
-    ...u,
-    rank: i + 4, // karena rank mulai dari 4
-  }));
+  const topUsers = sortedUsers
+    .slice(0, 3)
+    .map((u, i) => ({ ...u, rank: i + 1 }));
+  const leaderboard = sortedUsers
+    .slice(3)
+    .map((u, i) => ({ ...u, rank: i + 4 }));
 
   return (
     <>
       <Navbar />
 
-      <div className='bg-gradient-to-b from-primary to-secondary min-h-screen text-white p-6'>
+      <div
+        className='min-h-screen text-white p-6'
+        style={{ background: 'linear-gradient(to bottom, #7149C6, #FF0025)' }}
+      >
         {/* Tabs */}
-        <div className='flex justify-center mb-16 mt-32'>
-          <button className='px-6 py-2 bg-gray-800 rounded-l-full'>
+        <div className='flex justify-content-center mb-6 mt-6'>
+          <button className='px-4 py-2 bg-gray-800 border-round-left'>
             Top Akun
           </button>
-          <button className='px-6 py-2 bg-gray-700 rounded-r-full'>
+          <button className='px-4 py-2 bg-gray-700 border-round-right'>
             Top Konten
           </button>
         </div>
 
-        {/* Top 3 podium */}
-        <div className='flex items-end justify-center gap-6 mb-12'>
-          {/* Ambil user rank 2 */}
-          {topUsers.find((u) => u.rank === 2) && (
-            <div className='flex flex-col items-center'>
-              <div className='text-center mb-6'>
-                <img
-                  src={topUsers.find((u) => u.rank === 2).avatar}
-                  alt={topUsers.find((u) => u.rank === 2).name}
-                  className='w-20 h-20 rounded-full mb-2'
-                />
-                <p className='font-semibold'>
-                  {topUsers.find((u) => u.rank === 2).name}
-                </p>
-                <p className='font-semibold text-neutral-400 text-sm'>
-                  {topUsers.find((u) => u.rank === 2).username}
-                </p>
-                <p className='text-white text-xl mt-4'>
-                  {topUsers.find((u) => u.rank === 2).nilai}
-                </p>
-              </div>
-              <div className='flex flex-col items-center justify-start px-4 pt-8 rounded-lg bg-gradient-to-b from-neutral-200 to-neutral-700 w-40 h-40'>
-                <h3 className='text-6xl font-bold'>2</h3>
-              </div>
-            </div>
-          )}
+        {/* 2 Kolom */}
+        <div className='grid justify-content-center gap-4'>
+          {/* Leaderboard */}
+          <div className='col-12 lg:col-6'>
+            {/* Top 3 Podium */}
+            <div className='flex align-items-end justify-content-center gap-4 mb-6'>
+              {/* Rank 2 */}
+              {topUsers.find((u) => u.rank === 2) && (
+                <div className='flex flex-column align-items-center'>
+                  <div className='text-center mb-3'>
+                    <img
+                      src={topUsers.find((u) => u.rank === 2).avatar}
+                      alt=''
+                      className='border-circle w-5rem h-5rem mb-2'
+                    />
+                    <p className='font-bold'>
+                      {topUsers.find((u) => u.rank === 2).name}
+                    </p>
+                    <p className='text-500 text-sm'>
+                      {topUsers.find((u) => u.rank === 2).username}
+                    </p>
+                    <p className='text-xl mt-2'>
+                      {topUsers.find((u) => u.rank === 2).nilai}
+                    </p>
+                  </div>
+                  <div
+                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
+                    style={{
+                      background:
+                        'linear-gradient(to bottom, #e5e7eb, #374151)',
+                      width: '8rem',
+                      height: '8rem',
+                    }}
+                  >
+                    <h3 className='text-4xl font-bold'>2</h3>
+                  </div>
+                </div>
+              )}
 
-          {/* Ambil user rank 1 */}
-          {topUsers.find((u) => u.rank === 1) && (
-            <div className='flex flex-col items-center'>
-              <div className='text-center mb-6'>
-                <img
-                  src={topUsers.find((u) => u.rank === 1).avatar}
-                  alt={topUsers.find((u) => u.rank === 1).name}
-                  className='w-20 h-20 rounded-full mb-2'
-                />
-                <p className='font-semibold'>
-                  {topUsers.find((u) => u.rank === 1).name}
-                </p>
-                <p className='font-semibold text-neutral-400 text-sm'>
-                  {topUsers.find((u) => u.rank === 1).username}
-                </p>
-                <p className='text-white text-xl mt-4'>
-                  {topUsers.find((u) => u.rank === 1).nilai}
-                </p>
-              </div>
-              <div className='flex flex-col items-center justify-start px-4 pt-8 rounded-lg bg-gradient-to-b from-yellow-200 to-yellow-900 w-40 h-60'>
-                <h3 className='text-6xl font-bold'>1</h3>
-              </div>
-            </div>
-          )}
+              {/* Rank 1 */}
+              {topUsers.find((u) => u.rank === 1) && (
+                <div className='flex flex-column align-items-center'>
+                  <div className='text-center mb-3'>
+                    <img
+                      src={topUsers.find((u) => u.rank === 1).avatar}
+                      alt=''
+                      className='border-circle w-6rem h-6rem mb-2'
+                    />
+                    <p className='font-bold'>
+                      {topUsers.find((u) => u.rank === 1).name}
+                    </p>
+                    <p className='text-500 text-sm'>
+                      {topUsers.find((u) => u.rank === 1).username}
+                    </p>
+                    <p className='text-xl mt-2'>
+                      {topUsers.find((u) => u.rank === 1).nilai}
+                    </p>
+                  </div>
+                  <div
+                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
+                    style={{
+                      background:
+                        'linear-gradient(to bottom, #fef08a, #78350f)',
+                      width: '8rem',
+                      height: '12rem',
+                    }}
+                  >
+                    <h3 className='text-4xl font-bold'>1</h3>
+                  </div>
+                </div>
+              )}
 
-          {/* Ambil user rank 3 */}
-          {topUsers.find((u) => u.rank === 3) && (
-            <div className='flex flex-col items-center'>
-              <div className='text-center mb-6'>
-                <img
-                  src={topUsers.find((u) => u.rank === 3).avatar}
-                  alt={topUsers.find((u) => u.rank === 3).name}
-                  className='w-20 h-20 rounded-full mb-2'
-                />
-                <p className='font-semibold'>
-                  {topUsers.find((u) => u.rank === 3).name}
-                </p>
-                <p className='font-semibold text-neutral-400 text-sm'>
-                  {topUsers.find((u) => u.rank === 3).username}
-                </p>
-                <p className='text-white text-xl mt-4'>
-                  {topUsers.find((u) => u.rank === 3).nilai}
-                </p>
-              </div>
-              <div className='flex flex-col items-center justify-start px-4 pt-8 rounded-lg bg-gradient-to-b from-amber-100 to-amber-800 w-40 h-32'>
-                <h3 className='text-6xl font-bold'>3</h3>
-              </div>
+              {/* Rank 3 */}
+              {topUsers.find((u) => u.rank === 3) && (
+                <div className='flex flex-column align-items-center'>
+                  <div className='text-center mb-3'>
+                    <img
+                      src={topUsers.find((u) => u.rank === 3).avatar}
+                      alt=''
+                      className='border-circle w-5rem h-5rem mb-2'
+                    />
+                    <p className='font-bold'>
+                      {topUsers.find((u) => u.rank === 3).name}
+                    </p>
+                    <p className='text-500 text-sm'>
+                      {topUsers.find((u) => u.rank === 3).username}
+                    </p>
+                    <p className='text-xl mt-2'>
+                      {topUsers.find((u) => u.rank === 3).nilai}
+                    </p>
+                  </div>
+                  <div
+                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
+                    style={{
+                      background:
+                        'linear-gradient(to bottom, #fef3c7, #92400e)',
+                      width: '8rem',
+                      height: '6rem',
+                    }}
+                  >
+                    <h3 className='text-4xl font-bold'>3</h3>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        {/* Leaderboard table */}
-        <div className='max-w-3xl mx-auto'>
-          {/* Header */}
-          <div className='grid grid-cols-4 bg-gray-800 text-gray-300 text-sm px-4 py-3 rounded-t-xl font-semibold'>
-            <p className='text-center'>Rank</p>
-            <p className='col-span-2'>User</p>
-            <p className='text-center'>Nilai</p>
+            {/* Leaderboard Table */}
+            <div className='mx-auto w-full'>
+              <div className='grid grid-nogutter surface-800 text-300 text-sm px-3 py-2 border-round-top font-bold'>
+                <p className='col-2 text-center'>Rank</p>
+                <p className='col-7'>User</p>
+                <p className='col-3 text-center'>Nilai</p>
+              </div>
+
+              {leaderboard.map((user) => (
+                <div
+                  key={user.id}
+                  className='grid grid-nogutter align-items-center px-3 py-2 surface-900 border-bottom-1 border-700'
+                >
+                  <p className='col-2 text-center font-bold'>{user.rank}</p>
+                  <div className='col-7 flex align-items-center gap-2'>
+                    <img
+                      src={user.avatar}
+                      alt={user.name}
+                      className='w-2rem h-2rem border-circle'
+                    />
+                    <div>
+                      <p className='font-medium'>{user.name}</p>
+                      <p className='text-400 text-xs'>{user.username}</p>
+                    </div>
+                  </div>
+                  <p className='col-3 text-center'>
+                    {user.nilai.toLocaleString()}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Rows */}
-          {leaderboard.map((user) => (
-            <div
-              key={user.id}
-              className='grid grid-cols-4 items-center px-4 py-3 bg-gray-900/60 border-b border-gray-700 last:rounded-b-xl'
-            >
-              {/* Rank */}
-              <p className='text-center font-semibold'>{user.rank}</p>
-
-              {/* User */}
-              <div className='flex items-center gap-3 col-span-2'>
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className='w-9 h-9 rounded-full'
-                />
-                <div>
-                  <p className='text-white font-medium'>{user.name}</p>
-                  {user.username && (
-                    <p className='text-gray-400 text-xs'>{user.username}</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Nilai */}
-              <p className='text-center'>{user.nilai.toLocaleString()}</p>
+          {/* Detail Table */}
+          <div className='col-12 lg:col-6 surface-900 border-round overflow-hidden'>
+            <div className='grid grid-nogutter surface-800 text-300 text-sm px-3 py-2 font-bold'>
+              <p className='col'>Nama</p>
+              <p className='col'>Username</p>
+              <p className='col text-center'>Like</p>
+              <p className='col text-center'>Comment</p>
+              <p className='col text-center'>View</p>
+              <p className='col text-center'>Nilai</p>
             </div>
-          ))}
+            {sortedUsers.map((user) => (
+              <div
+                key={user.id}
+                className='grid grid-nogutter align-items-center px-3 py-2 surface-900 border-bottom-1 border-700'
+              >
+                <p className='col'>{user.name}</p>
+                <p className='col text-400'>{user.username}</p>
+                <p className='col text-center'>{user.like}</p>
+                <p className='col text-center'>{user.comment}</p>
+                <p className='col text-center'>{user.view.toLocaleString()}</p>
+                <p className='col text-center font-bold'>{user.nilai}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

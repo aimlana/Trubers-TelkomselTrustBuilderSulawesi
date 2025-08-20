@@ -2,49 +2,46 @@ import { ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className='bg-gradient-to-t from-secondary to-primary px-11 py-12 flex justify-between'>
-      <div className='h-full flex flex-col-reverse justify-between items-start'>
-        <h5 className='font-kalnia text-9xl text-white font-semibold'>
-          Telkomsel
-        </h5>
-
-        <div className='mb-20'>
-          <p className='text-white text-2xl w-3/5 mb-12'>
+    <footer className='footer-gradient font-jakarta'>
+      <div className='grid footer-shell align-items-stretch'>
+        {/* Kiri */}
+        <div className='col-12 md:col-6 flex flex-column justify-content-between'>
+          <p className='footer-desc-left'>
             Dari genggamanmu ke seluruh peluang, Telkomsel selalu hadir membuka
             jalan untuk masa depanmu.
           </p>
-        </div>
-      </div>
 
-      <div className='flex flex-col justify-between items-end'>
-        <div className='flex flex-col text-xl gap-6 text-white'>
-          <p className='text-end'>
+          <h5 className='text-9xl font-semibold text-white m-0'>Telkomsel</h5>
+        </div>
+
+        {/* Kanan */}
+        <div className='col-12 md:col-6 flex flex-column justify-content-between align-items-end'>
+          <div className='text-white text-right address'>
             Jl. A. P. Pettarani No.3, Mannuruki, Kec. Tamalate, Kota Makassar,
             Sulawesi Selatan 90221
-          </p>
-        </div>
+          </div>
 
-        <div className='flex flex-col text-xl gap-6 items-end text-white'>
-          <a
-            href='https://www.facebook.com/tselsulawesi/'
-            target='_blank'
-            className='flex gap-1 items-center cursor-pointer transition-colors'
-          >
-            Facebook
-            <ArrowUpRight size={32} />
-          </a>
-          <a
-            href='https://www.instagram.com/tselsulawesi/'
-            target='_blank'
-            className='flex gap-1 items-center cursor-pointer transition-colors'
-          >
-            Instagram
-            <ArrowUpRight size={32} />
-          </a>
-          <a className='flex gap-1 items-center cursor-pointer transition-colors'>
-            Email
-            <ArrowUpRight size={32} />
-          </a>
+          <div className='flex gap-3 text-white'>
+            <a
+              href='https://www.facebook.com/tselsulawesi/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='footer-link'
+            >
+              Facebook <ArrowUpRight size={24} />
+            </a>
+            <a
+              href='https://www.instagram.com/tselsulawesi/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='footer-link'
+            >
+              Instagram <ArrowUpRight size={24} />
+            </a>
+            <a className='footer-link' href='mailto:info@telkomsel.com'>
+              Email <ArrowUpRight size={24} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

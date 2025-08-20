@@ -1,10 +1,227 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poetsen+One&display=swap');
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Poetsen+One&display=swap');
+@import 'primeflex/primeflex.css';
 
-@theme {
-  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
-  --font-poetsen: 'Poetsen One', sans-serif;
+:root {
+  --primary: #7149C6;
+  --secondary: #FF0025;
+}
 
-  --color-primary: #7149C6;
-  --color-secondary: #FF0025;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.font-poetsen {
+  font-family: 'Poetsen One', cursive;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.3s ease;
+}
+.gradient-text:hover {
+  background: linear-gradient(to right, var(--secondary), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-link:hover {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-btn {
+  padding: 0.5rem 2.25rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.login-btn:hover {
+  background: linear-gradient(to right, var(--secondary), var(--primary));
+}
+
+/* Hero */
+.hero {
+  padding-top: 3rem;
+}
+.btn-gradient {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: #fff;
+  font-size: 1.125rem; 
+  font-weight: 500;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+.btn-gradient:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, var(--secondary), var(--primary));
+}
+
+.hero-title {
+  font-weight: 600;
+  font-size: 2.25rem;
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.75rem; 
+  }
+}
+
+.hero-desc {
+  color: #737373; 
+  max-width: 48rem; 
+  margin: 0 auto 3rem;
+}
+
+/* Benefit */
+/* Section */
+.benefit-section {
+  padding-top: 5rem;
+  margin-bottom: 5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Heading */
+.benefit-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.benefit-desc {
+  color: #737373;
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Grid */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .benefit-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.benefit-card {
+  background: #fff;
+  padding: 5rem 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb; /* neutral-300 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.benefit-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.benefit-icon {
+  margin-bottom: 1rem;
+  color: #E8216D;
+}
+
+.benefit-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.benefit-card p {
+  font-size: 0.875rem;
+  color: #4b5563; /* gray-600 */
+  line-height: 1.6;
+}
+
+/* FAQ */
+.faq-title {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subscribe */
+.subs-text {
+  max-width: 60rem;
+}
+
+/* Footer */
+.footer-gradient {
+  background: linear-gradient(to top, var(--secondary), var(--primary));
+}
+
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+.footer-desc {
+  font-size: 1.5rem; 
+  width: 60%;        
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.address {
+  max-width: 24rem;
+  line-height: 1.4;
+}
+
+/* Link sosmed tetap sama */
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  color: #fff;
+  transition: color .2s ease;
+}
+.footer-link:hover { color: #ffeb3b; }
+
+.footer-shell {
+  min-height: 28rem;   /* atur sesuai desain (mis. 60vh kalau mau lebih tinggi) */
+  padding: 2rem 1.5rem;
+}
+
+/* Batasi lebar paragraf kiri agar tidak pecah sempit seperti di screenshot */
+.footer-desc-left {
+  color: #fff;
+  font-size: 1.125rem;
+  max-width: 32rem;        /* jangan pakai width:% supaya responsif */
+  margin: 0 0 1rem 0;
 }

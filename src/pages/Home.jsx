@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <div className='min-h-screen bg-white flex flex-col font-jakarta'>
+    <div className='min-h-screen bg-white font-jakarta'>
       <Navbar />
       <Hero />
       <GridImage />
