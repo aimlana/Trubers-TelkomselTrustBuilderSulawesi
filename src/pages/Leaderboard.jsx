@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar';
+import 'primeflex/primeflex.css';
 
 const users = [
   {
@@ -68,63 +69,49 @@ const Leaderboard = () => {
   const topUsers = sortedUsers
     .slice(0, 3)
     .map((u, i) => ({ ...u, rank: i + 1 }));
-  const leaderboard = sortedUsers
-    .slice(3)
-    .map((u, i) => ({ ...u, rank: i + 4 }));
 
   return (
     <>
       <Navbar />
 
-      <div
-        className='min-h-screen text-white p-6'
-        style={{ background: 'linear-gradient(to bottom, #7149C6, #FF0025)' }}
-      >
+      <div className='bg-gradient-to-b from-primary to-secondary min-h-screen text-white p-3 md:p-6 font-jakarta'>
         {/* Tabs */}
-        <div className='flex justify-content-center mb-6 mt-6'>
-          <button className='px-4 py-2 bg-gray-800 border-round-left'>
+        <div className='flex justify-center rank-btn'>
+          <button className='btn-top-rank'>
             Top Akun
           </button>
-          <button className='px-4 py-2 bg-gray-700 border-round-right'>
+          <button className='btn-top-rank'>
             Top Konten
           </button>
         </div>
 
-        {/* 2 Kolom */}
-        <div className='grid justify-content-center gap-4'>
+        {/* 2 Kolom: Leaderboard & Table Detail */}
+        <div className='grid grid-nogutter lg:grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto'>
           {/* Leaderboard */}
-          <div className='col-12 lg:col-6'>
+          <div className='col'>
             {/* Top 3 Podium */}
-            <div className='flex align-items-end justify-content-center gap-4 mb-6'>
+            <div className='flex align-items-end justify-content-center gap-3 md:gap-6 mb-6 md:mb-12'>
               {/* Rank 2 */}
               {topUsers.find((u) => u.rank === 2) && (
                 <div className='flex flex-column align-items-center'>
-                  <div className='text-center mb-3'>
+                  <div className='text-center mb-4 md:mb-6'>
                     <img
                       src={topUsers.find((u) => u.rank === 2).avatar}
-                      alt=''
-                      className='border-circle w-5rem h-5rem mb-2'
+                      alt={topUsers.find((u) => u.rank === 2).name}
+                      className='w-6 h-6 md:w-20 md:h-20 border-circle mb-2'
                     />
-                    <p className='font-bold'>
+                    <p className='font-semibold text-sm md:text-base'>
                       {topUsers.find((u) => u.rank === 2).name}
                     </p>
-                    <p className='text-500 text-sm'>
+                    <p className='font-semibold text-neutral-400 text-xs md:text-sm'>
                       {topUsers.find((u) => u.rank === 2).username}
                     </p>
-                    <p className='text-xl mt-2'>
+                    <p className='text-white text-lg md:text-xl mt-2 md:mt-4'>
                       {topUsers.find((u) => u.rank === 2).nilai}
                     </p>
                   </div>
-                  <div
-                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
-                    style={{
-                      background:
-                        'linear-gradient(to bottom, #e5e7eb, #374151)',
-                      width: '8rem',
-                      height: '8rem',
-                    }}
-                  >
-                    <h3 className='text-4xl font-bold'>2</h3>
+                  <div className='flex flex-column align-items-center justify-content-start px-3 md:px-4 pt-6 md:pt-8 border-round bg-gradient-to-b from-neutral-200 to-neutral-700 bar-two'>
+                    <h3 className='text-4xl font-bold m-0'>2</h3>
                   </div>
                 </div>
               )}
@@ -132,32 +119,24 @@ const Leaderboard = () => {
               {/* Rank 1 */}
               {topUsers.find((u) => u.rank === 1) && (
                 <div className='flex flex-column align-items-center'>
-                  <div className='text-center mb-3'>
+                  <div className='text-center mb-4 md:mb-6'>
                     <img
                       src={topUsers.find((u) => u.rank === 1).avatar}
-                      alt=''
-                      className='border-circle w-6rem h-6rem mb-2'
+                      alt={topUsers.find((u) => u.rank === 1).name}
+                      className='w-6 h-6 md:w-20 md:h-20 border-circle mb-2'
                     />
-                    <p className='font-bold'>
+                    <p className='font-semibold text-sm md:text-base'>
                       {topUsers.find((u) => u.rank === 1).name}
                     </p>
-                    <p className='text-500 text-sm'>
+                    <p className='font-semibold text-neutral-400 text-xs md:text-sm'>
                       {topUsers.find((u) => u.rank === 1).username}
                     </p>
-                    <p className='text-xl mt-2'>
+                    <p className='text-white text-lg md:text-xl mt-2 md:mt-4'>
                       {topUsers.find((u) => u.rank === 1).nilai}
                     </p>
                   </div>
-                  <div
-                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
-                    style={{
-                      background:
-                        'linear-gradient(to bottom, #fef08a, #78350f)',
-                      width: '8rem',
-                      height: '12rem',
-                    }}
-                  >
-                    <h3 className='text-4xl font-bold'>1</h3>
+                  <div className='flex flex-column align-items-center justify-content-start px-3 md:px-4 pt-8 md:pt-10 border-round bg-gradient-to-b from-yellow-200 to-yellow-900 bar-one'>
+                    <h3 className='text-4xl font-bold m-0'>1</h3>
                   </div>
                 </div>
               )}
@@ -165,91 +144,61 @@ const Leaderboard = () => {
               {/* Rank 3 */}
               {topUsers.find((u) => u.rank === 3) && (
                 <div className='flex flex-column align-items-center'>
-                  <div className='text-center mb-3'>
+                  <div className='text-center mb-4 md:mb-6'>
                     <img
                       src={topUsers.find((u) => u.rank === 3).avatar}
-                      alt=''
-                      className='border-circle w-5rem h-5rem mb-2'
+                      alt={topUsers.find((u) => u.rank === 3).name}
+                      className='w-6 h-6 md:w-20 md:h-20 border-circle mb-2'
                     />
-                    <p className='font-bold'>
+                    <p className='font-semibold text-sm md:text-base'>
                       {topUsers.find((u) => u.rank === 3).name}
                     </p>
-                    <p className='text-500 text-sm'>
+                    <p className='font-semibold text-neutral-400 text-xs md:text-sm'>
                       {topUsers.find((u) => u.rank === 3).username}
                     </p>
-                    <p className='text-xl mt-2'>
+                    <p className='text-white text-lg md:text-xl mt-2 md:mt-4'>
                       {topUsers.find((u) => u.rank === 3).nilai}
                     </p>
                   </div>
-                  <div
-                    className='flex flex-column align-items-center justify-content-start px-3 pt-4 border-round'
-                    style={{
-                      background:
-                        'linear-gradient(to bottom, #fef3c7, #92400e)',
-                      width: '8rem',
-                      height: '6rem',
-                    }}
-                  >
-                    <h3 className='text-4xl font-bold'>3</h3>
+                  <div className='flex flex-column align-items-center justify-content-start px-3 md:px-4 pt-6 md:pt-8 border-round bg-gradient-to-b from-amber-100 to-amber-800 bar-three'>
+                    <h3 className='text-4xl font-bold m-0'>3</h3>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Leaderboard Table */}
-            <div className='mx-auto w-full'>
-              <div className='grid grid-nogutter surface-800 text-300 text-sm px-3 py-2 border-round-top font-bold'>
-                <p className='col-2 text-center'>Rank</p>
-                <p className='col-7'>User</p>
-                <p className='col-3 text-center'>Nilai</p>
-              </div>
-
-              {leaderboard.map((user) => (
-                <div
-                  key={user.id}
-                  className='grid grid-nogutter align-items-center px-3 py-2 surface-900 border-bottom-1 border-700'
-                >
-                  <p className='col-2 text-center font-bold'>{user.rank}</p>
-                  <div className='col-7 flex align-items-center gap-2'>
-                    <img
-                      src={user.avatar}
-                      alt={user.name}
-                      className='w-2rem h-2rem border-circle'
-                    />
-                    <div>
-                      <p className='font-medium'>{user.name}</p>
-                      <p className='text-400 text-xs'>{user.username}</p>
-                    </div>
-                  </div>
-                  <p className='col-3 text-center'>
-                    {user.nilai.toLocaleString()}
-                  </p>
-                </div>
-              ))}
             </div>
-          </div>
 
-          {/* Detail Table */}
-          <div className='col-12 lg:col-6 surface-900 border-round overflow-hidden'>
-            <div className='grid grid-nogutter surface-800 text-300 text-sm px-3 py-2 font-bold'>
-              <p className='col'>Nama</p>
-              <p className='col'>Username</p>
-              <p className='col text-center'>Like</p>
-              <p className='col text-center'>Comment</p>
-              <p className='col text-center'>View</p>
-              <p className='col text-center'>Nilai</p>
+          {/* Tabel Detail Keterangan */}
+          <div className='col bg-gray-900/70 border-round-xl overflow-hidden'>
+            {/* Header */}
+            <div className='grid grid-nogutter bg-gray-800 text-gray-300 text-sm px-3 md:px-4 py-2 md:py-3 font-semibold'>
+              <div className='col-2'>Nama</div>
+              <div className='col-2'>Username</div>
+              <div className='col text-center'>Like</div>
+              <div className='col text-center'>Comment</div>
+              <div className='col text-center'>View</div>
+              <div className='col text-center'>Nilai</div>
             </div>
+
+            {/* Rows */}
             {sortedUsers.map((user) => (
               <div
                 key={user.id}
-                className='grid grid-nogutter align-items-center px-3 py-2 surface-900 border-bottom-1 border-700'
+                className='grid grid-nogutter align-items-center px-3 md:px-4 py-2 md:py-3 bg-gray-900 border-bottom-1 border-gray-700 last:border-none'
               >
-                <p className='col'>{user.name}</p>
-                <p className='col text-400'>{user.username}</p>
-                <p className='col text-center'>{user.like}</p>
-                <p className='col text-center'>{user.comment}</p>
-                <p className='col text-center'>{user.view.toLocaleString()}</p>
-                <p className='col text-center font-bold'>{user.nilai}</p>
+                <div className='col-2 text-sm md:text-base'>{user.name}</div>
+                <div className='col-2 text-gray-400 text-sm'>
+                  {user.username}
+                </div>
+                <div className='col text-center'>{user.like}</div>
+                <div className='col text-center'>{user.comment}</div>
+                <div className='col text-center'>
+                  {user.view.toLocaleString()}
+                </div>
+                <div className='col text-center font-semibold'>
+                  {user.nilai}
+                </div>
               </div>
             ))}
           </div>
