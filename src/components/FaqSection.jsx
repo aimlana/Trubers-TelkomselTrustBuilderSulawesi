@@ -42,10 +42,10 @@ const FaqSection = () => {
     >
       {/* Left content */}
       <div className='flex-1'>
-        <h2 className='faq-title text-4xl md:text-6xl font-medium bg-gradient text-transparent bg-clip-text line-height-3'>
+        <h2 className='faq-title text-center md:text-left text-4xl md:text-6xl font-medium bg-gradient text-transparent bg-clip-text line-height-3'>
           Frequently Asked <br /> Questions
         </h2>
-        <p className='text-lg text-600 mt-1 md:mt-2 line-height-3'>
+        <p className='text-center md:text-left text-xs md:text-lg text-600 mt-1 md:mt-2 line-height-3'>
           Temukan jawaban untuk pertanyaan umum yang sering <br />
           ditanyakan tentang Telkomsel Talent.
         </p>
@@ -59,9 +59,9 @@ const FaqSection = () => {
             className='cursor-pointer shadow-2 p-4 md:p-5 border-round-3xl flex flex-column align-items-start mb-4 transition-all hover:shadow-4'
             onClick={() => toggleFAQ(index)}
           >
-            <h4 className='text-lg font-medium'>{faq.question}</h4>
+            <h4 className='text-sm md:text-lg font-medium'>{faq.question}</h4>
             <p
-              className={`text-sm text-600 mt-3 transition-all duration-300 ${
+              className={`faq-desc text-xs md:text-sm text-600 mt-3 transition-all duration-300 ${
                 openIndex === index ? 'block' : 'hidden'
               }`}
             >

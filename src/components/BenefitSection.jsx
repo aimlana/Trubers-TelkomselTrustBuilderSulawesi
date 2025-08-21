@@ -27,10 +27,10 @@ const BenefitSection = () => {
   return (
     <section id='benefit' className='benefit-section'>
       <div className='flex flex-column align-items-center'>
-        <h1 className='benefit-title'>Benefit Seru Buat Kamu yang Gabung!</h1>
-        <p className='benefit-desc'>
+        <h1 className='text-center text-3xl md:text-6xl'>Benefit Seru Buat Kamu yang Gabung!</h1>
+        <p className='text-xs text-center'>
           Nikmati berbagai keuntungan eksklusif dari Telkomsel untuk mendukung
-          kreativitasmu sebagai content creator muda.
+          kreativitasmu sebagai trust builder Telkomsel.
         </p>
       </div>
 

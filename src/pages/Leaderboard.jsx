@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import 'primeflex/primeflex.css';
 
@@ -65,6 +66,8 @@ const users = [
 ];
 
 const Leaderboard = () => {
+  const [activeButton, setActiveButton] = useState('Account');
+
   const sortedUsers = [...users].sort((a, b) => b.nilai - a.nilai);
   const topUsers = sortedUsers
     .slice(0, 3)
@@ -77,18 +80,23 @@ const Leaderboard = () => {
       <div className='bg-gradient-to-b from-primary to-secondary min-h-screen text-white p-3 md:p-6 font-jakarta'>
         {/* Tabs */}
         <div className='flex justify-center rank-btn'>
-          <button className='btn-top-rank'>
-            Top Akun
-          </button>
-          <button className='btn-top-rank'>
-            Top Konten
-          </button>
+          {['Account', 'Post'].map((name) => (
+            <button
+              key={name}
+              className={`btn-top-rank ${
+                activeButton === name ? 'btn-active' : 'btn-inactive'
+              }`}
+              onClick={() => setActiveButton(name)}
+            >
+              Top {name}
+            </button>
+          ))}
         </div>
 
-        {/* 2 Kolom: Leaderboard & Table Detail */}
-        <div className='grid grid-nogutter lg:grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto'>
+        {/* Kolom: Leaderboard & Table Detail */}
+        <div className='grid lg:grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto'>
           {/* Leaderboard */}
-          <div className='col'>
+          <div className='col-12  lg:col'>
             {/* Top 3 Podium */}
             <div className='flex align-items-end justify-content-center gap-3 md:gap-6 mb-6 md:mb-12'>
               {/* Rank 2 */}
@@ -166,37 +174,46 @@ const Leaderboard = () => {
                 </div>
               )}
             </div>
-
-            </div>
+          </div>
 
           {/* Tabel Detail Keterangan */}
-          <div className='col bg-gray-900/70 border-round-xl overflow-hidden'>
+          <div className='col-12 lg:col bg-gray-900/70 border-round-xl overflow-y-auto md:overflow-hidden'>
             {/* Header */}
             <div className='grid grid-nogutter bg-gray-800 text-gray-300 text-sm px-3 md:px-4 py-2 md:py-3 font-semibold'>
-              <div className='col-2'>Nama</div>
-              <div className='col-2'>Username</div>
-              <div className='col text-center'>Like</div>
-              <div className='col text-center'>Comment</div>
-              <div className='col text-center'>View</div>
-              <div className='col text-center'>Nilai</div>
+              <div className='col-fixed text-center text-xs md:text-base' style={{ width: '2.5rem' }}>
+                Rank
+              </div>
+              <div className='col-2 text-xs'>Nama</div>
+              <div className='col-2 text-xs'>Username</div>
+              <div className='col text-center text-xs'>Like</div>
+              <div className='col text-center text-xs'>Comment</div>
+              <div className='col text-center text-xs'>View</div>
+              <div className='col text-center text-xs'>Nilai</div>
             </div>
 
-            {/* Rows */}
-            {sortedUsers.map((user) => (
+            {/* Rows - menggunakan index untuk menampilkan rank berurutan */}
+            {sortedUsers.map((user, index) => (
               <div
                 key={user.id}
                 className='grid grid-nogutter align-items-center px-3 md:px-4 py-2 md:py-3 bg-gray-900 border-bottom-1 border-gray-700 last:border-none'
               >
-                <div className='col-2 text-sm md:text-base'>{user.name}</div>
-                <div className='col-2 text-gray-400 text-sm'>
+                <div
+                  className='col-fixed text-center font-semibold'
+                  style={{ width: '2.5rem' }}
+                >
+                  {/* Menampilkan angka berurutan dari 1 */}
+                  {index + 1}
+                </div>
+                <div className='col-2 text-xs md:text-base'>{user.name}</div>
+                <div className='col-2 text-gray-400 text-xs'>
                   {user.username}
                 </div>
-                <div className='col text-center'>{user.like}</div>
-                <div className='col text-center'>{user.comment}</div>
-                <div className='col text-center'>
+                <div className='col text-center text-xs md:text-base'>{user.like}</div>
+                <div className='col text-center text-xs md:text-base'>{user.comment}</div>
+                <div className='col text-center text-xs md:text-base'>
                   {user.view.toLocaleString()}
                 </div>
-                <div className='col text-center font-semibold'>
+                <div className='col text-center font-semibold text-xs md:text-base'>
                   {user.nilai}
                 </div>
               </div>
